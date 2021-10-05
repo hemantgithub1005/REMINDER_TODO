@@ -1,0 +1,462 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* =============== RESET =============== */
+
+ul li {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+/* =============== ALL =============== */
+
+h1 {
+  margin: 20px 0;
+}
+
+input[type="text"] {
+  padding: 0 5px;
+}
+
+input[type="text"]:focus {
+  outline: 1px solid white;
+}
+
+.side-bar input[type="text"] {
+  background-color: #1a1d22;
+  color: white;
+  border: none;
+}
+
+.main input[type="text"] {
+  background-color: #282c34;
+  color: white;
+  border: none;
+}
+
+/* =============== MAIN HOLDER =============== */
+
+.main-holder {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid grey;
+  height: 600px;
+  border-radius: 10px;
+}
+
+/* =============== SIDEBAR (list-holder) =============== */
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  border-right: 1px solid black;
+}
+
+.label-my-lists {
+  margin: 10px 0;
+  padding: 0 10px;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.lists-holder {
+  height: 100%;
+}
+
+.list-button {
+  text-transform: capitalize;
+  margin: 15px auto;
+  padding: 10px;
+  border: 2px solid rgba(13, 174, 177, 0);
+  cursor: pointer;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255, 0.584);
+  position: relative;
+  transition: ease 0.3s all;
+  /* float: right; */
+}
+
+.list-button.active {
+  text-transform: capitalize;
+  margin: 15px auto;
+  padding: 10px;
+  border: 2px solid rgba(13, 174, 177, 0.406);
+  cursor: pointer;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0);
+  color: rgb(255, 255, 255);
+  position: relative;
+  transition: ease 0.3s all;
+  background-color: rgba(112, 116, 125, 0.28);
+}
+
+.list-button:hover,
+.list-button:focus {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  transition: ease 0.3s all;
+  border: 2px solid rgba(13, 174, 177, 0.406);
+}
+
+.list-holder {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  /* padding: 0; */
+  /* width: 100%; */
+  min-height: 30px;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+
+.list-holder:hover {
+  background-color: rgb(70, 70, 70);
+  transition: all ease-out 0.3s;
+}
+
+.list-holder.active {
+  background-color: grey;
+  transition: all ease-out 0.5s;
+}
+
+.list-name {
+  display: flex;
+  flex-direction: row;
+  /* width: 100%; */
+  text-align: left;
+}
+
+.list-name form {
+  width: 100%;
+  display: flex;
+}
+
+.list-name form input[type="text"] {
+  /* width: 80%; */
+}
+
+/* ====== Delete button ====== */
+
+.cross {
+  /* position: absolute; */
+  /* right: 32px; */
+  /* top: 32px; */
+  width: 30px;
+  height: 30px;
+  /* height: 0; */
+  opacity: 0.6;
+  position: relative;
+  margin: 0 5px;
+  background: none;
+}
+
+.cross:hover {
+  opacity: 1;
+}
+
+.cross:before,
+.cross:after {
+  position: absolute;
+  /* left: 15px; */
+  top: 2px;
+  left: 14px;
+  content: " ";
+  height: 25px;
+  width: 2px;
+  background-color: #333;
+}
+
+.cross:before {
+  transform: rotate(45deg);
+}
+
+.cross:after {
+  transform: rotate(-45deg);
+}
+
+.reminder-input-wrapper .cross {
+  margin-right: 8px;
+}
+
+.reminder-input-wrapper .cross:before,
+.reminder-input-wrapper .cross:after {
+  background-color: rgb(165, 164, 164);
+}
+
+/* ====== end of Delete button ====== */
+
+.list-input-wrapper {
+  margin: 20px 10px;
+}
+
+.list-input-wrapper form {
+  display: flex;
+  flex-direction: row;
+}
+
+.list-input-wrapper form input[type="text"] {
+  margin-left: 23px;
+  width: 100%;
+  height: 30px;
+}
+
+.list-input-wrapper form input[type="submit"] {
+  color: rgba(255, 255, 255, 0.584);
+  margin: 5px;
+  transition: all ease 0.5s;
+  width: 36px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.list-input-wrapper form input[type="submit"]:hover,
+.list-input-wrapper form input[type="submit"]:focus {
+  text-decoration: none;
+  color: rgb(66, 39, 39);
+  /* transition: ease 0.3s all; */
+  /* border: 2px solid rgba(13, 174, 177, 0.406); */
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* =============== MAIN (REMINDERS) =============== */
+
+.main {
+  background-color: #1a1d22;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 10px 10px 0;
+}
+
+.reminders-page-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.reminders-page-title {
+  font-size: 2.3rem;
+  font-weight: bold;
+  text-align: left;
+  /* margin: 10px 0; */
+}
+
+.reminders-page-count {
+  font-size: 2.3rem;
+}
+
+/* ==== Checkbox ==== */
+
+input[type="checkbox"] {
+  /* transform: scale(2); */
+  /* padding: 20px; */
+  /* margin: 10px; */
+  /* border-radius: 15px; */
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  margin: 10px;
+  background-color: #eee;
+
+  /* width: 1.3em; */
+  /* height: 1.3em; */
+  /* background-color: white; */
+  border-radius: 50%;
+  /* vertical-align: middle; */
+  /* border: 1px solid #ddd; */
+  -webkit-appearance: none;
+  outline: none;
+  /* cursor: pointer; */
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  text-decoration: none;
+  color: rgb(66, 39, 39);
+  transition: ease 0.3s all;
+  /* border: 2px solid rgba(13, 174, 177, 0.406); */
+}
+
+.round {
+  position: relative;
+  height: 25px;
+  width: 25px;
+  margin: 7px;
+}
+
+.round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 23px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 23px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 5px;
+  opacity: 0;
+  position: absolute;
+  top: 6px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+/* ==== end of Checkbox ==== */
+
+.reminders-holder {
+  height: 100%;
+}
+
+.reminders-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: grey;
+}
+
+.reminders-holder ul li {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+
+.reminder-wrapper {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid rgb(85, 85, 85);
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reminder-input-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.reminder-input-wrapper form {
+  /* height: 50px; */
+  display: flex;
+  width: 100%;
+}
+
+.reminder-input-wrapper form input[type="text"] {
+  width: 100%;
+}
+
+.reminder-name {
+  font-size: 1rem;
+}
+
+.clear-all-reminders-button {
+  transition: all ease 0.8s;
+  transition-delay: 0.5s;
+  background: #282c34;
+  color: grey;
+  padding: 5px;
+  margin: 10px;
+  font-size: 0.8rem;
+  /* opacity: 1; */
+}
+
+.clear-all-reminders-button.hidden {
+  transition: none;
+}
+
+.clear-all-reminders-button:hover {
+  /* transition: all ease 0.3s; */
+
+  color: #e9e9e9;
+}
+
+.reminder-new-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 10px;
+}
+
+.reminder-new-input-wrapper form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.reminder-new-input-wrapper form input[type="text"] {
+  margin-left: 23px;
+  width: 100%;
+  height: 30px;
+}
+
+.reminder-new-input-wrapper form input[type="submit"] {
+  color: rgba(255, 255, 255, 0.584);
+  margin: 5px;
+  transition: all ease 0.5s;
+  width: 31px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.reminder-new-input-wrapper form input[type="submit"]:hover,
+.reminder-new-input-wrapper form input[type="submit"]:focus {
+  text-decoration: none;
+  color: rgb(66, 39, 39);
+  transition: ease 0.3s all;
+}
+
+.create-reminder-button {
+}
+
+/* =============== OTHER =============== */
+
+.vertical-align {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
