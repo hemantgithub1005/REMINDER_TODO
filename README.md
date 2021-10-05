@@ -14,6 +14,7 @@ Hosted at [Netlify](https://reminders-app.netlify.app/).
 2. Install all the dependencies with `yarn install`
 3. Start the development server with `yarn start`
 
-## Authors
 
-- Ivan Cheng
+
+
+
